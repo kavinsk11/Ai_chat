@@ -35,6 +35,8 @@ def display_conversation(conversation_id, store_id):
 
         # Display user messages and system replies alternately
         st.header('Conversation:')
+        st.write(f'Conversation ID: {conversation_id}')
+        st.write(f'Store ID: {store_id}')
         for user_msg, sys_reply in zip(user_messages, system_replies):
             st.write(f'**User**: {user_msg["message"]}')
             st.write(f'**System**: {sys_reply["message"]}')
