@@ -48,6 +48,40 @@ def render_system_reply(reply):
 
 # Main Streamlit app
 def main():
+    st.sidebar.title("Settings")
+
+    # Toggle button for theme selection
+    dark_mode = st.sidebar.checkbox("Dark Mode",value =True)
+    
+    # Apply selected theme
+    if dark_mode:
+        st.markdown(
+            """
+            <style>
+            .main {
+                background-color: #000000;
+                color: #ffffff;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            """
+            <style>
+            .main {
+                background-color: #ffffff;
+                color: #000000;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                color: #000000;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
     st.title('AI Chat Box')
 
     # Set the default Conversation ID and Store ID
@@ -65,10 +99,21 @@ def main():
         st.write(f'Conversation ID: {default_conversation_id}')
         st.write(f'Store ID: {default_store_id}')
 
+        # Initialize message counters
+        user_message_count = 0
+        system_message_count = 0
+
         # Display user messages and system replies alternately
         for user_msg, sys_reply in zip(user_messages, system_replies):
-            st.write(f'**User**: {user_msg["message"]}')
-            st.write(f'**System**: {sys_reply["message"]}')
+            st.markdown(f'<div style="color: inherit;"><strong>User:</strong> {user_msg["message"]}</div>', unsafe_allow_html=True)
+            user_message_count += 1
+            st.markdown(f'<div style="color: inherit;"><strong>System:</strong> {sys_reply["message"]}</div>', unsafe_allow_html=True)
+            system_message_count += 1
+
+        # Display message counters in the sidebar
+        st.sidebar.header("Message Counters")
+        st.sidebar.write(f"User Messages: {user_message_count}")
+        st.sidebar.write(f"System Messages: {system_message_count}")
     else:
         st.error('Failed to fetch conversation data. Please check Conversation ID and Store ID.')
 
