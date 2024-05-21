@@ -49,6 +49,7 @@ def render_system_reply(reply):
     st.write(clean_reply)
 
 # Main Streamlit app
+# Main Streamlit app
 def main():
     st.title('AI Chat Box')
 
@@ -62,8 +63,11 @@ def main():
         # Filter conversation data
         user_messages, system_replies = filter_conversation(conversation_data)
 
-        # Display user messages and system replies alternately
+        # Display conversation heading with Conversation ID
         st.header('Conversation:')
+        st.write(f'Conversation ID: {default_conversation_id}')
+
+        # Display user messages and system replies alternately
         for user_msg, sys_reply in zip(user_messages, system_replies):
             st.write(f'**User**: {user_msg["message"]}')
             st.write(f'**System**: {sys_reply["message"]}')
