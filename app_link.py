@@ -12,7 +12,6 @@ def fetch_conversation_data(conversation_id, store_id):
         return None
 
 # Function to filter conversation data based on user and system messages
-# Function to filter conversation data based on user and system messages
 def filter_conversation(conversation_data):
     user_messages = []
     system_replies = []
@@ -26,7 +25,6 @@ def filter_conversation(conversation_data):
                     clean_msg = re.sub(r'<[^>]*>', '', msg['message'])
                     system_replies.append({'message': clean_msg})
     return user_messages, system_replies
-
 
 # Function to render system replies, including text, images, and links
 def render_system_reply(reply):
@@ -43,18 +41,12 @@ def render_system_reply(reply):
     for url, text in links:
         st.write(f'[**{text}**]({url})')
 
-    # Remove images and links for the text part
-    clean_reply = re.sub(r'<img[^>]+>', '', reply)
-    clean_reply = re.sub(r'<a[^>]+href="[^">]+"[^>]*>([^<]+)<\/a>', r'\1', clean_reply)
-    st.write(clean_reply)
-
-# Main Streamlit app
 # Main Streamlit app
 def main():
     st.title('AI Chat Box')
 
     # Set the default Conversation ID and Store ID
-    default_conversation_id = '482f1860a3a7d99b7cdbd573dd2416d8d579916a9874f71ffe5ec5f45406862a'
+    default_conversation_id = 'd04ba3b0794f903198dde5b3e8ba99c6b0037bcc7b798ae8f0db2f29faa1a70e'
     default_store_id = 'ai-asst.myshopify.com'
 
     # Fetch conversation data based on default Conversation ID and Store ID
@@ -63,9 +55,10 @@ def main():
         # Filter conversation data
         user_messages, system_replies = filter_conversation(conversation_data)
 
-        # Display conversation heading with Conversation ID
+        # Display conversation heading with Conversation ID and Store ID
         st.header('Conversation:')
         st.write(f'Conversation ID: {default_conversation_id}')
+        st.write(f'Store ID: {default_store_id}')
 
         # Display user messages and system replies alternately
         for user_msg, sys_reply in zip(user_messages, system_replies):
