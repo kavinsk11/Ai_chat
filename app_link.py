@@ -54,7 +54,7 @@ def main():
     st.title('AI Chat Box')
 
     # Set the default Conversation ID and Store ID
-    default_conversation_id = '907daf260552160e48f79d8d43fe675fb8461b113471367d40b7b497dfaf4b9a'
+    default_conversation_id = '482f1860a3a7d99b7cdbd573dd2416d8d579916a9874f71ffe5ec5f45406862a'
     default_store_id = 'ai-asst.myshopify.com'
 
     # Fetch conversation data based on default Conversation ID and Store ID
