@@ -50,39 +50,6 @@ def render_system_reply(reply):
 
 # Main Streamlit app
 def main():
-     st.sidebar.title("Settings")
-
-    # Toggle button for theme selection
-    dark_mode = st.sidebar.checkbox("Dark Mode",value =True)
-    
-    # Apply selected theme
-    if dark_mode:
-        st.markdown(
-            """
-            <style>
-            .main {
-                background-color: #000000;
-                color: #ffffff;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown(
-            """
-            <style>
-            .main {
-                background-color: #ffffff;
-                color: #000000;
-            }
-            h1, h2, h3, h4, h5, h6 {
-                color: #000000;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
     st.title('AI Chat Box')
 
     # Set the default Conversation ID and Store ID
