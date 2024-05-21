@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import re
-import time
 
 # Function to fetch conversation data from the API
 def fetch_conversation_data(conversation_id, store_id):
@@ -55,7 +54,7 @@ def main():
     st.title('AI Chat Box')
 
     # Set the default Conversation ID and Store ID
-    default_conversation_id = 'd04ba3b0794f903198dde5b3e8ba99c6b0037bcc7b798ae8f0db2f29faa1a70e'
+    default_conversation_id = '482f1860a3a7d99b7cdbd573dd2416d8d579916a9874f71ffe5ec5f45406862a'
     default_store_id = 'ai-asst.myshopify.com'
 
     # Fetch conversation data based on default Conversation ID and Store ID
@@ -71,8 +70,7 @@ def main():
         # Display user messages and system replies alternately
         for user_msg, sys_reply in zip(user_messages, system_replies):
             st.write(f'**User**: {user_msg["message"]}')
-            render_system_reply(sys_reply["message"])
-            time.sleep(2)  # Add a 2-second delay between system reply and user reply
+            st.write(f'**System**: {sys_reply["message"]}')
     else:
         st.error('Failed to fetch conversation data. Please check Conversation ID and Store ID.')
 
