@@ -41,6 +41,11 @@ def render_system_reply(reply):
     for url, text in links:
         st.write(f'[**{text}**]({url})')
 
+    # Remove images and links for the text part
+    clean_reply = re.sub(r'<img[^>]+>', '', reply)
+    clean_reply = re.sub(r'<a[^>]+href="[^">]+"[^>]*>([^<]+)<\/a>', r'\1', clean_reply)
+    st.write(clean_reply)
+
 # Main Streamlit app
 def main():
     st.title('AI Chat Box')
