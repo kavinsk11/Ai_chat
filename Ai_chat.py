@@ -64,7 +64,7 @@ def main():
         st.markdown("""
             <style>
             .main {
-                background-color: #000000;
+                background-color: #1e1e1e;
                 color: #ffffff;
             }
             </style>
