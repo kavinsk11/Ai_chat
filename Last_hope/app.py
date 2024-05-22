@@ -55,7 +55,7 @@ def main():
     st.title('AI Chat Box')
     
     st.subheader('Enter Conversation Details in view conversation')
-
+    st.image('https://img.freepik.com/free-vector/hand-holding-phone-with-conversation-girl-chat-bot-mobile-app-talking-robot-online-flat-vector-illustration-technology-assistance-concept-banner-website-design-landing-page_74855-24649.jpg?size=626&ext=jpg&ga=GA1.1.1677168032.1716374508&semt=sph')
 
     # Sidebar for dark mode and navigation
     st.sidebar.title('Settings')
@@ -81,17 +81,16 @@ def main():
             </style>
         """, unsafe_allow_html=True)
 
-        
-        # Get query parameters
-        query_params = st.experimental_get_query_params()
-        conversation_id = query_params.get('conversation_id', [None])[0]
-        store_id = query_params.get('store_id', [None])[0]
+    # Get query parameters
+    query_params = st.experimental_get_query_params()
+    conversation_id = query_params.get('conversation_id', [None])[0]
+    store_id = query_params.get('store_id', [None])[0]
 
-        if conversation_id and store_id:
-            # Display the conversation
-            display_conversation(conversation_id, store_id)
-        else:
-            st.warning('Please enter both Conversation ID and Store ID.')
+    if conversation_id and store_id:
+        # Display the conversation
+        display_conversation(conversation_id, store_id)
+    else:
+        st.warning('Please enter both Conversation ID and Store ID.')
 
 # Run the main Streamlit app
 if __name__ == "__main__":
